@@ -41,29 +41,31 @@
           <h3 class="header center orange-text">INSCREVA-SE AGORA</h3>
           <div class="row ">
             <div class="row">
-              <form class="col s12">
+              <form class="col s12" onsubmit="return send()" action="#" method="POST">
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" name="email" class="validate">
                     <label for="email" data-error="wrong" data-success="right">Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
+                    <input id="first_name" type="text" name="first_name" class="validate">
                     <label for="first_name">Nome</label>
                   </div>
                   <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" name="last_name" type="text" class="validate">
                     <label for="last_name">Sobrenome</label>
                   </div>
                 </div>
+                <div class="row center">
+                  <button  id="download-button" class="btn-large waves-effect waves-light orange">Confirmar</a>
+                </div>
+                
               </form>
             </div>
           </div>
-          <div class="row center">
-            <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Confirmar</a>
-          </div>
+          
           <br><br>
         </div>
       </div>
@@ -103,6 +105,37 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+
+  <script type="text/javascript">
+    
+    var send = function(){
+
+      var email = document.getElementById("email").value;
+      var first_name = document.getElementById("first_name").value;
+      var last_name = document.getElementById("last_name").value;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://flisoleventmanagement.herokuapp.com/public/attendee", true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+          first_name: first_name,
+          last_name: last_name,
+          email: email
+      }));
+
+      document.getElementById("email").value = "";
+      document.getElementById("first_name").value = "";
+      document.getElementById("last_name").value = "";
+
+      alert("Email registrado com sucesso!");
+
+      return false;
+
+    }
+
+    
+
+  </script>
 
   </body>
 </html>
