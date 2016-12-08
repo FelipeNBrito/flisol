@@ -1,0 +1,28 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.icones{
+  color: rgb(255, 255, 255);
+}
+
+#banner{
+  width:405.906px;
+  height:627px;
+	background-attachment: fixed !important;
+	background-image: url("../img/banner_980x439.jpeg");
+	background-repeat: repeat;
+	background-size: cover;
+	width: 100%;
+}
